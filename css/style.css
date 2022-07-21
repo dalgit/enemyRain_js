@@ -15,6 +15,14 @@ body {
     position: relative;
 }
 
+.topBox{
+    margin: 20px;
+    width:100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
 #hero{
     background-image: url(../img/hero.png);
     width:35px;
@@ -46,7 +54,9 @@ body {
     left:50%;
     transform:translateX(-50%);
 }
+
 .enemyDeath{
     background-position:99%;
     top:30px;
 }
+

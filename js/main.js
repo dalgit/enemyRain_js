@@ -2,6 +2,8 @@ const hero = document.querySelector('#hero')
 const enemy = document.querySelector('.enemy')
 const bg = document.querySelector('#bg')
 const imgBox = document.querySelector('.imgBox')
+const timeDiv = document.getElementById('time')
+const heart =document.getElementsByTagName('i')
 
 window.addEventListener("keydown", (e) => {
     let x=0;
@@ -50,7 +52,7 @@ let interval = setInterval(()=>{
 
 
 let copyInterval = setInterval(()=>{
-    let random = Math.floor(Math.random()*(bg.offsetWidth-44));
+    let random = Math.floor(Math.random()*(bg.offsetWidth-66)+22);
     let copyEnermy = document.createElement('div');
     copyEnermy.className='enemy';
     copyEnermy.style.left = `${random}px`;  
@@ -63,18 +65,12 @@ let copyInterval = setInterval(()=>{
 },600)
 
 
-//let random = Math.floor(Math.random()*(bg.offsetWidth-enemy.offsetWidth));
-
 //오류     let random = Math.floor(Math.random()*(bg.offsetWidth-enemy.offsetWidth));
 
 
-// function createEnermy() {
-//     let copyEnermy = document.createElement('div');
-//     copyEnermy.className='enemy'
-//     hero.appendChild(copyEnermy);
 
-//     let copyInterval = setInterval(()=>{
-//         enemyMove(copyEnermy)
-//         crash(copyEnermy)
-//     },100)
-// }
+let second = 0;
+setInterval(()=>{
+    second++;
+    timeDiv.innerHTML=`${second} seconds`
+},1000)
