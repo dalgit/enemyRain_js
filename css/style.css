@@ -24,3 +24,15 @@ body {
     left:50%;
     transform:translateX(-50%);
 }
+
+.heroRight{
+    background-position:35px;
+}
+
+.heroLeft{
+    background-position:70px;
+}
+
+.heroStop{
+    background-position:0;
+}
