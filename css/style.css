@@ -37,7 +37,7 @@ body {
     background-position:0;
 }
 
-#enemy{
+.enemy{
     background-image: url(../img/enemy.png);
     width:44px;
     height:55px;
@@ -46,7 +46,7 @@ body {
     left:50%;
     transform:translateX(-50%);
 }
-
 .enemyDeath{
     background-position:99%;
+    top:30px;
 }

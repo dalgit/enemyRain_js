@@ -1,5 +1,7 @@
 const hero = document.querySelector('#hero')
-const enemy = document.querySelector('#enemy')
+const enemy = document.querySelector('.enemy')
+const bg = document.querySelector('#bg')
+
 
 window.addEventListener("keydown", (e) => {
     let x=0;
@@ -20,12 +22,12 @@ window.addEventListener("keydown", (e) => {
 
 window.addEventListener("keyup", (e)=>{
     hero.className='heroStop'
-    console.log(hero)
 });
 
 function enemyMove() {
     if(enemy.offsetTop>540){
-        enemy.className='enemyDeath'
+        enemy.classList.add('enemyDeath')
+        setTimeout(() => enemy.classList.remove('enemy'), 500);
        return clearInterval(enemyInterval)
     }
     y = enemy.offsetTop + 10;
@@ -36,11 +38,13 @@ function crash() {
     if(hero.offsetTop<=enemy.offsetTop+15 && 
         enemy.offsetLeft-22<=hero.offsetLeft &&
         hero.offsetLeft<=enemy.offsetLeft+22){
-        enemy.className='enemyDeath'
+        enemy.classList.add('enemyDeath')
+        console.log(enemy)
         console.log('boom!!!!')
         return clearInterval(enemyInterval)
     }
 }
+
 
 const enemyInterval = setInterval(()=>{
     enemyMove()
