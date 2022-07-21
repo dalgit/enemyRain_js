@@ -26,12 +26,23 @@ window.addEventListener("keyup", (e)=>{
 function enemyMove() {
     if(enemy.offsetTop>540){
         enemy.className='enemyDeath'
-        return clearInterval()
+       return clearInterval(enemyInterval)
     }
     y = enemy.offsetTop + 10;
     enemy.style.top = `${y}px`;   
 }
 
-setInterval(()=>{
+function crash() {
+    if(hero.offsetTop<=enemy.offsetTop+15 && 
+        enemy.offsetLeft-22<=hero.offsetLeft &&
+        hero.offsetLeft<=enemy.offsetLeft+22){
+        enemy.className='enemyDeath'
+        console.log('boom!!!!')
+        return clearInterval(enemyInterval)
+    }
+}
+
+const enemyInterval = setInterval(()=>{
     enemyMove()
+    crash()
 },40)
