@@ -1,7 +1,7 @@
 const hero = document.querySelector('#hero')
 const enemy = document.querySelector('.enemy')
 const bg = document.querySelector('#bg')
-
+const imgBox = document.querySelector('.imgBox')
 
 window.addEventListener("keydown", (e) => {
     let x=0;
@@ -24,29 +24,57 @@ window.addEventListener("keyup", (e)=>{
     hero.className='heroStop'
 });
 
-function enemyMove() {
-    if(enemy.offsetTop>540){
-        enemy.classList.add('enemyDeath')
-        setTimeout(() => enemy.classList.remove('enemy'), 500);
-       return clearInterval(enemyInterval)
+function enemyMove(ene) {
+    if(ene.offsetTop>540){
+        ene.classList.add('enemyDeath')
+        setTimeout(() => ene.classList.remove('enemy'), 500);
+       return clearInterval(interval)
     }
-    y = enemy.offsetTop + 10;
-    enemy.style.top = `${y}px`;   
+    y = ene.offsetTop + 10;
+    ene.style.top = `${y}px`;   
 }
 
-function crash() {
-    if(hero.offsetTop<=enemy.offsetTop+15 && 
-        enemy.offsetLeft-22<=hero.offsetLeft &&
-        hero.offsetLeft<=enemy.offsetLeft+22){
-        enemy.classList.add('enemyDeath')
-        console.log(enemy)
-        console.log('boom!!!!')
-        return clearInterval(enemyInterval)
+function crash(ene) {
+    if(hero.offsetTop<=ene.offsetTop+15 && 
+        ene.offsetLeft-22<=hero.offsetLeft &&
+        hero.offsetLeft<=ene.offsetLeft+22){
+        ene.classList.add('enemyDeath')
+        return clearInterval(interval)
     }
 }
 
+let interval = setInterval(()=>{
+    enemyMove(enemy)
+    crash(enemy)
+},20)
 
-const enemyInterval = setInterval(()=>{
-    enemyMove()
-    crash()
-},40)
+
+let copyInterval = setInterval(()=>{
+    let random = Math.floor(Math.random()*(bg.offsetWidth-44));
+    let copyEnermy = document.createElement('div');
+    copyEnermy.className='enemy';
+    copyEnermy.style.left = `${random}px`;  
+    imgBox.appendChild(copyEnermy);
+    console.log(random)
+    let interval = setInterval(()=>{
+        enemyMove(copyEnermy)
+        crash(copyEnermy)
+    },20)
+},600)
+
+
+//let random = Math.floor(Math.random()*(bg.offsetWidth-enemy.offsetWidth));
+
+//오류     let random = Math.floor(Math.random()*(bg.offsetWidth-enemy.offsetWidth));
+
+
+// function createEnermy() {
+//     let copyEnermy = document.createElement('div');
+//     copyEnermy.className='enemy'
+//     hero.appendChild(copyEnermy);
+
+//     let copyInterval = setInterval(()=>{
+//         enemyMove(copyEnermy)
+//         crash(copyEnermy)
+//     },100)
+// }
