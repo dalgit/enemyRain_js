@@ -36,3 +36,17 @@ body {
 .heroStop{
     background-position:0;
 }
+
+#enemy{
+    background-image: url(../img/enemy.png);
+    width:44px;
+    height:55px;
+    position: absolute;
+    top:2px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.enemyDeath{
+    background-position:99%;
+}
